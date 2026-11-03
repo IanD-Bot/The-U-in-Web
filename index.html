@@ -1,5 +1,90 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The U in Web</title>
-<style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;background:#fff;color:#111}@media(prefers-color-scheme:dark){body{background:#111;color:#eee}}</style>
-</head><body><main><h1>The U in Web</h1><p>Coming soon: see what your browser shares with every site you visit.</p></main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://ipwho.is https://ipapi.co; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="See what your browser reveals to every website you visit, and how to share less.">
+<title>The U in Web: what your browser reveals</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-row">
+    <div>
+      <h1>The U in Web</h1>
+      <p class="lede">What every website can learn about <em>you</em> the moment you visit, and how to share less. Everything below is worked out inside your browser; nothing is stored or sent anywhere unless you click "Show my IP".</p>
+    </div>
+    <button type="button" id="theme-toggle" class="btn" aria-pressed="false">Dark theme</button>
+  </div>
+  <nav class="wrap toc" aria-label="Sections">
+    <ol>
+      <li><a href="#device">Device and browser</a></li>
+      <li><a href="#fingerprint">Fingerprint</a></li>
+      <li><a href="#network">Network</a></li>
+      <li><a href="#trackers">Trackers</a></li>
+      <li><a href="#permissions">Permission demos</a></li>
+      <li><a href="#cant-see">What sites can't see</a></li>
+      <li><a href="#checklist">Stay safer</a></li>
+      <li><a href="#privacy">Privacy note</a></li>
+    </ol>
+  </nav>
+  <div class="wrap legend" aria-label="Risk legend">
+    <span class="risk risk-low">Low risk</span>
+    <span class="risk risk-medium">Medium risk</span>
+    <span class="risk risk-high">High risk</span>
+    <span class="risk risk-info">Info</span>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <section id="device" aria-labelledby="h-device">
+    <h2 id="h-device">1. Your device and browser</h2>
+    <p class="intro">Every site can read these without asking. On their own most look harmless; together they narrow you down.</p>
+    <div class="items" id="device-items"></div>
+  </section>
+  <section id="fingerprint" aria-labelledby="h-fingerprint">
+    <h2 id="h-fingerprint">2. Fingerprint</h2>
+    <p class="intro">A fingerprint mixes many small details into one ID. It is often near-unique, works without cookies, and survives clearing your history or using private mode.</p>
+    <div class="items" id="fingerprint-items"></div>
+  </section>
+  <section id="network" aria-labelledby="h-network">
+    <h2 id="h-network">3. Your network</h2>
+    <p class="intro">Your IP address is sent with every request, so every site you visit already has it. The button below shows what it says about you. Nothing is looked up until you click.</p>
+    <div class="items" id="network-items"></div>
+  </section>
+  <section id="trackers" aria-labelledby="h-trackers">
+    <h2 id="h-trackers">4. Trackers</h2>
+    <div class="items" id="trackers-items"></div>
+  </section>
+  <section id="permissions" aria-labelledby="h-permissions">
+    <h2 id="h-permissions">5. Permission demos</h2>
+    <div class="items" id="permissions-items"></div>
+  </section>
+  <section id="cant-see" aria-labelledby="h-cant-see">
+    <h2 id="h-cant-see">6. What sites can't see</h2>
+    <div class="items" id="cant-see-items"></div>
+  </section>
+  <section id="checklist" aria-labelledby="h-checklist">
+    <h2 id="h-checklist">7. Stay safer checklist</h2>
+    <div class="items" id="checklist-items"></div>
+  </section>
+  <section id="privacy" aria-labelledby="h-privacy">
+    <h2 id="h-privacy">8. Privacy note</h2>
+    <div class="items" id="privacy-items"></div>
+  </section>
+</main>
+<noscript><p class="wrap">This page needs JavaScript to show what your browser reveals. It runs entirely in your browser.</p></noscript>
+<footer class="wrap foot" id="similar" aria-labelledby="h-similar">
+  <h2 id="h-similar">9. Similar tools</h2>
+  <div class="items" id="similar-items"></div>
+</footer>
+<script src="js/core.js"></script>
+<script src="js/device.js"></script>
+<script src="js/fingerprint.js"></script>
+<script src="js/network.js"></script>
+<script src="js/static.js"></script>
+</body>
+</html>
