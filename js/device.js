@@ -79,12 +79,8 @@
   } catch (e) { gpu.set(null, 'low'); }
 
   var bat = U.item(box, { label: 'Battery', risk: 'low',
-    info: { what: 'Battery level and whether you are charging (Battery Status API, Chromium only).', why: 'Level and charge time can briefly link visits across sites, and a battery at all tells a site you are on a laptop or phone.', how: 'Firefox and Safari removed this API.' } });
-  if (nav.getBattery) bat.valueEl.style.minHeight = '7em';
-  if (nav.getBattery) nav.getBattery().then(function (b) {
-    bat.set(U.kv([['Level', Math.round(b.level * 100) + '%'], ['Charging', b.charging ? 'yes' : 'no'], ['Time to full', isFinite(b.chargingTime) ? Math.round(b.chargingTime / 60) + ' min' : '\u2014'], ['Time to empty', isFinite(b.dischargingTime) ? Math.round(b.dischargingTime / 60) + ' min' : '\u2014']]), 'medium');
-  }, function () { bat.set(null, 'low'); });
-  else bat.set(null, 'low');
+    info: { what: 'Battery level and whether you are charging (Battery Status API, Chromium only).', why: 'Level and charge time can briefly link visits across sites, and a battery at all tells a site you are on a laptop or phone.', how: 'Firefox and Safari removed this API. Brave reports fixed values instead of the real ones.' } });
+  U.battery.attach(bat, nav);
 
   var cn = nav.connection;
   U.item(box, { label: 'Connection type', risk: 'low',
