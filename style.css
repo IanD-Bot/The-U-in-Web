@@ -64,3 +64,6 @@ table.kv td,table.kv th{border-top:1px solid var(--border);padding:3px 4px;text-
 main,.foot{visibility:hidden;animation:uiw-show 0s linear 2s forwards}
 .ready main,.ready .foot{visibility:visible;animation:none}
 @keyframes uiw-show{to{visibility:visible}}
+.spoof-wrap{position:relative}
+.spoof{font-family:inherit;font-weight:600;white-space:normal;flex:1 1 auto}
+.spoof-wrap .pop{top:36px;left:0;right:0}
