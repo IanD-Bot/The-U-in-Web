@@ -36,18 +36,20 @@ test('real values are shown with medium risk', async () => {
   assert.match(handle.text, /Level: 70%/);
   assert.match(handle.text, /Charging: no/);
   assert.match(handle.text, /Time to empty: 90 min/);
-  assert.doesNotMatch(handle.text, /spoofed/);
+  assert.doesNotMatch(handle.text, /Fixed values/);
 });
 
-test('known fixed values are flagged as likely spoofed with lower risk and an info bubble', async () => {
+test('known fixed values are flagged as fixed values with lower risk and an info bubble', async () => {
   const { B, handle } = load();
   const state = await B.attach(handle, { getBattery: () => Promise.resolve(mockBattery(SPOOF)) });
   assert.strictEqual(state, 'spoofed');
   assert.strictEqual(handle.risk, 'low');
-  assert.match(handle.text, /Likely spoofed by your browser \(privacy protection\)/);
+  assert.match(handle.text, /Fixed values: no battery, fully charged, or spoofed/);
   const pop = handle.value.kids.find(k => k.tag === 'div' && k.info);
   assert.ok(pop, 'spoof info bubble present');
-  assert.match(pop.info.how, /fully charged and plugged in/);
+  assert.match(pop.info.why, /no battery/);
+  assert.match(pop.info.why, /fully charged and plugged in/);
+  assert.match(pop.info.how, /Brave/);
 });
 
 test('isSpoofed needs all four fixed values', () => {
